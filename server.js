@@ -20,7 +20,7 @@ mongoose
   });
 
 const typeDefs = fs.readFileSync(
-  path.join(__dirname, "schema/user.graphql"),
+  path.join(__dirname, "schema/user.gql"),
   "utf-8"
 );
 
