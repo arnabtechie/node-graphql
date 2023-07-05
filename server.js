@@ -3,9 +3,14 @@ const { ApolloServer, gql } = require("apollo-server-express");
 const mongoose = require("mongoose");
 const fs = require("fs");
 const path = require("path");
+const morgan = require("morgan");
+const helmet = require("helmet");
 
 const app = express();
 const port = 3000;
+
+app.use(morgan("dev"));
+app.use(helmet());
 
 mongoose
   .connect("mongodb://localhost:27017/gql-node", {
@@ -20,7 +25,7 @@ mongoose
   });
 
 const typeDefs = fs.readFileSync(
-  path.join(__dirname, "schema/user.gql"),
+  path.join(__dirname, "schemas/user.graphql"),
   "utf-8"
 );
 
